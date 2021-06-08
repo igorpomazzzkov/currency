@@ -10,12 +10,12 @@ class CurrencyController {
     @Autowired
     private lateinit var currencyService: CurrencyService
 
-    @GetMapping("/account")
+    @GetMapping("account")
     fun accountInfo() = this.currencyService.getAccountInfo()
 
-    @GetMapping("/priceChanged24h")
+    @GetMapping("priceChanged24h")
     fun priceChanged24h() = this.currencyService.getPriceChange24h()
 
-    @GetMapping("/myTrades")
+    @GetMapping("myTrades")
     fun myTrades() = this.currencyService.getMyTrades()
 }

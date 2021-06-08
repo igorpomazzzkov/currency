@@ -71,6 +71,27 @@ class CurrencyService(
         }
     }
 
+    fun exchangeInfo(): String? {
+        val builder = UriComponentsBuilder.fromHttpUrl("$url/exchangeInfo")
+        LOG.info("currency.com get exchange info")
+        val restTemplate = RestTemplate()
+        try {
+            val response = restTemplate.exchange(
+                builder.toUriString(),
+                HttpMethod.GET,
+                hmacSerive.getHeaderWithoutApiKey(),
+                String::class.java
+            )
+            if (response.statusCode != HttpStatus.OK || response.body == null) {
+                LOG.error("error from currency.com, status: ${response.statusCode}, response: $response")
+            }
+            return response.body
+        } catch (e: HttpStatusCodeException) {
+            LOG.error("exception on get exchange info", e)
+            throw CurrencyException(e.statusCode, e.message.toString())
+        }
+    }
+
     fun getMyTrades(): String? {
         val builder = UriComponentsBuilder.fromHttpUrl("$url/myTrades")
             .queryParam("timestamp", Date().time)
