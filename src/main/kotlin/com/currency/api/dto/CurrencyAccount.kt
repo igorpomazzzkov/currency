@@ -18,7 +18,7 @@ data class AccountCurrencyBalance(
     val accountId: String,
     val collateralCurrency: Boolean,
     val asset: String,
-    val free: Long,
-    val locked: Long,
+    val free: Double,
+    val locked: Double,
     val default: Boolean
 )

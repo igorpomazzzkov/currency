@@ -1,4 +1,4 @@
-package com.currency.api
+package com.currency.api.controller
 
 import com.currency.api.currency.CurrencyService
 import org.springframework.beans.factory.annotation.Autowired
@@ -10,6 +10,12 @@ class CurrencyController {
     @Autowired
     private lateinit var currencyService: CurrencyService
 
-    @GetMapping
-    fun main() = this.currencyService.getAccountInfo()
+    @GetMapping("/account")
+    fun accountInfo() = this.currencyService.getAccountInfo()
+
+    @GetMapping("/priceChanged24h")
+    fun priceChanged24h() = this.currencyService.getPriceChange24h()
+
+    @GetMapping("/myTrades")
+    fun myTrades() = this.currencyService.getMyTrades()
 }
