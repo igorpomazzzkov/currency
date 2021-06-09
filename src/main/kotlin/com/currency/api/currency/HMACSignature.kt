@@ -24,17 +24,19 @@ class HMACSignature(
         return HttpEntity<String>(headers)
     }
 
-    fun getHeaderWithoutApiKey(): HttpEntity<String> {
-        val headers = HttpHeaders()
-        headers.add("Accept", MediaType.APPLICATION_JSON_VALUE)
-        return HttpEntity<String>(headers)
-    }
-
     fun createSignature(data: String): String {
         val query = data.replace("/", "%2F")
         val sha256HMac = Mac.getInstance("HmacSHA256")
         val secretKey = SecretKeySpec(this.secretKey.toByteArray(), "HmacSHA256")
         sha256HMac.init(secretKey)
         return Hex.encodeHexString(sha256HMac.doFinal(query.toByteArray()))
+    }
+
+    companion object {
+        fun getHeaderWithoutApiKey(): HttpEntity<String> {
+            val headers = HttpHeaders()
+            headers.add("Accept", MediaType.APPLICATION_JSON_VALUE)
+            return HttpEntity<String>(headers)
+        }
     }
 }
