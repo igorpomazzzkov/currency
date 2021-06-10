@@ -21,5 +21,5 @@ enum class TimeInForce {
 }
 
 enum class Asset {
-    USD, ETH, BYN, BTC, EUR, GBR, RUB
+    USD, ETH, BYN, BTC, EUR, GBR, RUB, PLAYTIKA
 }

@@ -23,6 +23,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("commons-codec:commons-codec:1.9")
+    implementation("io.springfox", "springfox-swagger2", "2.9.2")
+    implementation("io.springfox.ui", "springfox-swagger-ui-rfc6570", "1.0.0")
+//    implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.5.0")
 }
 
 tasks.withType<KotlinCompile> {

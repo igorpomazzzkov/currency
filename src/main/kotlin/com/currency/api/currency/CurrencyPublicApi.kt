@@ -1,7 +1,6 @@
 package com.currency.api.currency
 
 import com.currency.api.dto.Asset
-import com.currency.api.dto.OHLCResponse
 import com.currency.api.exception.CurrencyException
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
